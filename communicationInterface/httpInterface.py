@@ -35,21 +35,23 @@ class Http:
         """
         try:
             address = self.host+path
-            data = requests.get(address,params = queryParams, headers=None)
-            if data.status_code >= 200 and data.status_code < 300:
-                if len(data.raw) == 0:
+            response = requests.get(address,params = queryParams, headers=None)
+            if response.status_code >= 200 and response.status_code < 300:
+                if len(response.text) == 0:
                     return {}
-                return data.json()
+                return response.json()
             else:
-                data.raise_for_status()
-        except ValueError:
-            print("Response not a proper dict/JSON "+data.raw)
-        except requests.exceptions.HTTPError as error:
-            print("Request failed with status "+ data.status_code)
-        except requests.exceptions.InvalidURL:
+                response.raise_for_status()
+        except requests.exceptions.InvalidURL as error:
             print("Invalid URL")
+            print(error)
+        except requests.exceptions.HTTPError as error:
+            print("Request failed with status "+ str(response.status_code))
+            print(error)
         except requests.exceptions.ConnectTimeout:
             print("Connection timeout")
+        except ValueError as error:
+            print(str(error))
         except Exception as err:
             print(str(err))
     def post(self, path, params, headers = None):
@@ -68,14 +70,15 @@ class Http:
         address = self.host+path
         try:
             response = requests.post(address,data = params, headers= headers)
-            if data.status_code >= 200 and data.status_code < 300:
-                if len(data.raw) == 0
+            if response.status_code >= 200 and response.status_code < 300:
+                if len(response.text) == 0:
                         return {}
-            return response.json()
-        else:
-                data.raise_for_status()
+                return response.json()
+            else:
+                response.raise_for_status()
         except requests.exceptions.HTTPError as error:
-            print("Request failed with status "+ data.status_code)
+            print("Request failed with status "+ str(response.status_code))
+            print(error)
         except requests.exceptions.InvalidURL:
             print("Invalid URL")
         except requests.exceptions.ConnectTimeout:
@@ -97,15 +100,16 @@ class Http:
         """
         address = self.host+path
         try:
-            response = requests.put(address,data = params)
-            if data.status_code >= 200 and data.status_code < 300:
-                if len(data.raw) == 0
+            response = requests.put(address,data = params,headers= headers)
+            if response.status_code >= 200 and response.status_code < 300:
+                if len(response.text) == 0:
                         return {}
-            return response.json()
-        else:
-                data.raise_for_status()
+                return response.json()
+            else:
+                response.raise_for_status()
         except requests.exceptions.HTTPError as error:
-            print("Request failed with status "+ data.status_code)
+            print("Request failed with status "+ str(response.status_code))
+            print(error)
         except requests.exceptions.InvalidURL:
             print("Invalid URL")
         except requests.exceptions.ConnectTimeout:
