@@ -1,25 +1,32 @@
 {
     "localNetworkConfig":{
-    "localNetworkCommunicationInterface":"wifi",
-    "localNetworkCommunicationProtocol":"mqtt",
-    "localNetworkEncryptionAlgorithm":"aes",
-    "localNetworkEncryptionBit":"128",
-    "localNetworkEndpoint":"default",
-    "localNetworkConnectionPort":"1883"
+        "localNetworkCommunicationInterface":"wifi",
+        "localNetworkCommunicationProtocol":"mqtt",
+        "localNetworkEncryptionAlgorithm":"aes",
+        "localNetworkEncryptionBit":"128",
+        "localNetworkEndpoint":"default",
+        "localNetworkConnectionPort":"1883"
     },
     "remoteNetworkConfig":{
-    "remoteNetworkCommunicationInterface":"wifi",
-    "remoteNetworkCommunicationProtocol":"mqtt",
-    "remoteNetworkEncryptionType":"mqtts",
-    "remoteNetworkEndpoint":"typeYourURLHere",
-    "remoteNetworKConnectionPort":"1883"
+        "remoteNetworkCommunicationInterface":"wifi",
+        "remoteNetworkCommunicationProtocol":"mqtt",
+        "remoteNetworkEncryptionType":"mqtts",
+        "remoteNetworkEndpoint":"typeYourURLHere",
+        "remoteNetworKConnectionPort":"1883"
     },
     "readConfig":{
-    "readParameterOneFromDevice":"edgeController1",
-    "readParameterTwoFromDevice":"edgeController2",
-    "readParameterThreeFromDevice":"edgeController3",
-    "readParameterFourFromDevice":"edgeController4",
-    "readDataInterval":"60"
+        "readParameterOneFromDevice":"edgeController1",
+        "readParameterTwoFromDevice":"edgeController2",
+        "readParameterThreeFromDevice":"edgeController3",
+        "readParameterFourFromDevice":"edgeController4",
+        "readDataInterval":"60"
+    },
+    "platformDetails":{
+        "hardwarePlatform":"raspberry",
+        "architecture":"arm",
+        "os":"stretch"
+
+
     }
 
 }
